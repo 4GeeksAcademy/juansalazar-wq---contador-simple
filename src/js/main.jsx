@@ -1,18 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+// Importa React al bundle
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-//Bootstrap
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+import "bootstrap";
 
-// index.css'
-import '../styles/index.css'
+// Estilos globales
+import "../styles/index.css";
 
-// components
-import Home from './components/Home';
+// Components
+import Home from "./components/Home";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+let seconds = 0;
+
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+const renderApp = () => {
+  root.render(<Home seconds= {seconds} />);
+};
+
+renderApp();
+
+setInterval(() => {
+  seconds++;
+  renderApp();
+}, 1000);
+
+
